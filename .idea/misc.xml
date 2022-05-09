@@ -10,6 +10,13 @@
         <entry key="..\:/MyApplication19/app/src/main/res/layout/fragment_start2.xml" value="0.12708333333333333" />
         <entry key="..\:/MyApplication19/app/src/main/res/layout/item_swipe.xml" value="0.1" />
         <entry key="..\:/MyApplication19/app/src/main/res/layout/list_item.xml" value="0.23819549555371208" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.1" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/layout/fragment_add_note.xml" value="0.17753623188405798" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/layout/fragment_detail.xml" value="0.20935960591133004" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/layout/fragment_start.xml" value="0.1375" />
+        <entry key="..\:/toDolistKotlin/app/src/main/res/layout/list_item.xml" value="0.17753623188405798" />
       </map>
     </option>
   </component>

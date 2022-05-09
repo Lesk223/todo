@@ -17,7 +17,13 @@ class AddNoteViewModel: ViewModel() {
         }
     fun delete (noteModel: NoteModel,onSuccess:()->Unit)=
         viewModelScope.launch (Dispatchers.IO) {
-            Repostory.deleteNote(noteModel){
+            Repostory.deleteNote(noteModel) {
                 onSuccess()
             }
+        }
+            fun update (noteModel: NoteModel,onSuccess:()->Unit)=
+                viewModelScope.launch (Dispatchers.IO) {
+                    Repostory.updateNote(noteModel){
+                        onSuccess()
+                    }
 }}

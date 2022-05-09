@@ -13,6 +13,9 @@
 
     <TextView
         android:id="@+id/item_title"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:layout_width="257dp"
         android:layout_height="38dp"
         android:layout_marginStart="10dp"

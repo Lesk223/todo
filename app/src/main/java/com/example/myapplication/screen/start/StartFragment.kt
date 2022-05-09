@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toolbar
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,7 @@ class StartFragment : Fragment() {
     ): View? {
         binding = FragmentStartBinding.inflate(layoutInflater, container, false)
         return binding.root
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,8 +66,6 @@ class StartFragment : Fragment() {
                     viewModel.delete(noteModel){}
                 }
             }
-            val ItemTouchHelper=ItemTouchHelper(item)
-            ItemTouchHelper.attachToRecyclerView()
         }
 
         }//as

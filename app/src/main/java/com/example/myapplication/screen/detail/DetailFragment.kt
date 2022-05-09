@@ -1,16 +1,19 @@
 package com.example.myapplication.screen.detail
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.APP
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentDetailBinding
 import com.example.myapplication.model.NoteModel
 import com.example.myapplication.screen.addnote.AddNoteViewModel
+import kotlinx.android.synthetic.main.fragment_detail.*
 
 
 class DetailFragment : Fragment() {
@@ -29,15 +32,32 @@ return binding.root   }
         super.onViewCreated(view, savedInstanceState)
     init()
     }
-
+    fun String.toEditable(): Editable =  Editable.Factory.getInstance().newEditable(this)
     private fun init() {
         val viewModel=ViewModelProvider (this).get(AddNoteViewModel::class.java)
-        binding.textViewDescript.text=currentNote.description
+        binding.textViewDescript.text=currentNote.description.toEditable()
         binding.textViewTitle.text=currentNote.title
-        binding.delbt.setOnClickListener{
-            viewModel.delete(currentNote){}
+        binding.textViewBack.setOnClickListener{
             APP.navController.navigate(R.id.action_detailFragment_to_startFragment)
         }
+        binding.saveView.setOnClickListener{
+            currentNote.description=binding.textViewDescript.text.toString()
+            viewModel.update(currentNote){}
+            APP.navController.navigate(R.id.action_detailFragment_to_startFragment)
+        }
+        binding.deleteView.setOnClickListener{
+           viewModel.delete(currentNote){}
+            APP.navController.navigate(R.id.action_detailFragment_to_startFragment)
+        }
+
+    }
+
+
+
+    override fun onPause() {
+       // val viewModel=ViewModelProvider(this).get(AddNoteViewModel::class.java)
+        //viewModel.update(NoteModel(title = binding.textViewTitle.text.toString(), description = binding.textViewDescript.text.toString())){}
+        super.onPause()
     }
 
 }

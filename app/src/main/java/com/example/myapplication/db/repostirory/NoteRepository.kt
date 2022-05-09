@@ -7,5 +7,7 @@ interface NoteRepository {
     val AllNotes: LiveData<List<NoteModel>>
     suspend fun insertNote (noteModel: NoteModel,onSuccess:()->Unit)
     suspend fun deleteNote (noteModel: NoteModel,onSuccess:()->Unit)
+    suspend fun updateNote (noteModel: NoteModel,onSuccess:()->Unit)
+
 
 }

@@ -44,11 +44,8 @@ class NoteAdapter:RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     override fun onViewAttachedToWindow(holder: NoteViewHolder) {
         super.onViewAttachedToWindow(holder)
-        StartFragment.del(listNote[holder.adapterPosition])
         holder.itemView.setOnClickListener {
-
-
-             // StartFragment.del(listNote[holder.adapterPosition])
+            StartFragment.clickNote(listNote[holder.adapterPosition])
         }
     }
 
