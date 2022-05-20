@@ -14,24 +14,29 @@
     <TextView
         android:id="@+id/item_title"
         android:maxLines="1"
+        android:drawableStart="@drawable/ic_baseline_folder_24"
         android:singleLine="true"
+        android:drawablePadding="5dp"
         android:ellipsize="end"
-        android:layout_width="257dp"
+        android:layout_width="200dp"
+        android:gravity="center_vertical"
         android:layout_height="38dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/alex_light"
+        android:fontFamily="@font/font_class"
         android:text="TextView"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/dateTime"
-        android:layout_width="135dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:fontFamily="@font/alex_light"
+        android:fontFamily="@font/font_class"
         android:text="TextView"
+        android:gravity="center_vertical"
+
         android:textColor="@color/white"
         android:textSize="18sp" />
 </LinearLayout>

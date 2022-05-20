@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.NoteModel
+import com.example.myapplication.model.Tasks
 import com.example.myapplication.screen.addnote.AddNoteViewModel
 import com.example.myapplication.screen.start.StartFragment
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -46,9 +47,9 @@ class NoteAdapter:RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
             StartFragment.clickNote(listNote[holder.adapterPosition])
+
         }
     }
-
 
 
 }

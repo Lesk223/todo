@@ -7,8 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.Repostory
 import com.example.myapplication.db.NoteDataBase
 import com.example.myapplication.db.repostirory.NoteRealisation
-import com.example.myapplication.db.repostirory.NoteRepository
+import com.example.myapplication.model.NodeWithTask
 import com.example.myapplication.model.NoteModel
+import com.example.myapplication.model.Tasks
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -28,4 +29,21 @@ val daoNote =NoteDataBase.getInstance(context).getANoteDao()
         return Repostory.AllNotes
 
     }
+ fun getKast(int: Int,onSuccess: () -> Unit)=
+     viewModelScope.launch ( Dispatchers.IO ){
+         Repostory.getTask(int){
+             onSuccess()
+     }
+
+}
+
+    fun getUsersWithPlaylists(): LiveData<List<NodeWithTask>> {
+        return Repostory.getTask
+    }
+    fun insert(tasks: Tasks, onSuccess:()->Unit)=
+        viewModelScope.launch (Dispatchers.IO) {
+            Repostory.insertTask(tasks){
+                onSuccess()
+            }
+        }
 }

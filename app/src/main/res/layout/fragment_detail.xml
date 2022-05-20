@@ -9,12 +9,14 @@
 
     <EditText
         android:id="@+id/textViewDescript"
-        android:layout_width="412dp"
-        android:layout_height="650dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="626dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="3dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/gray"
         android:backgroundTintMode="screen"
-        android:fontFamily="@font/alex_light"
+        android:fontFamily="@font/font_class"
         android:gravity="start"
         android:hint="Описание"
         android:maxLines="5"
@@ -26,7 +28,6 @@
         app:boxBackgroundColor="@color/white"
         app:boxStrokeColor="@color/gold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,16 +48,16 @@
         android:id="@+id/textViewTitle"
         android:layout_width="167dp"
         android:layout_height="40dp"
-        android:maxLines="1"
-        android:ellipsize="end"
         android:layout_marginTop="10dp"
-        android:textColor="@color/gray"
+        android:ellipsize="end"
+        android:fontFamily="@font/font_class"
         android:gravity="center"
-        android:textSize="30sp"
-        android:fontFamily="@font/alex_light"
+        android:maxLines="1"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/gray"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/saveView"
+        app:layout_constraintStart_toEndOf="@+id/textViewBack"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

@@ -6,7 +6,6 @@ import com.example.myapplication.Repostory
 import com.example.myapplication.model.NoteModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.annotation.RetentionPolicy
 
 class AddNoteViewModel: ViewModel() {
     fun insert(noteModel: NoteModel,onSuccess:()->Unit)=

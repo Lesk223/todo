@@ -13,28 +13,18 @@ import com.example.myapplication.APP
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAddNoteBinding
 import com.example.myapplication.model.NoteModel
-import com.jaredrummler.android.colorpicker.ColorPickerDialog
-import com.jaredrummler.android.colorpicker.ColorShape
+import com.example.myapplication.model.Tasks
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddNoteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddNoteFragment : Fragment() {
    lateinit var binding: FragmentAddNoteBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding= FragmentAddNoteBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
@@ -43,7 +33,6 @@ class AddNoteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
         getdate()
-
 
     }
     @SuppressLint("SimpleDateFormat")
@@ -60,12 +49,12 @@ class AddNoteFragment : Fragment() {
         val viewModel = ViewModelProvider(this).get(AddNoteViewModel::class.java)
         binding.btnUp.setOnClickListener {
             val title = binding.AddTitle.text.toString()
-            val descriptio = binding.AddDescript.text.toString()
+            //val descriptio = binding.AddDescript.text.toString()
             val time = getdate().toString()
             if (title.isBlank()){
                 Toast.makeText(context,"Введите название!",Toast.LENGTH_SHORT).show()
             }else {
-                viewModel.insert(NoteModel(title = title, description = descriptio, time = time)) {}
+                viewModel.insert(NoteModel(title = title, time = time)) {}
                 APP.navController.navigate(R.id.action_addNoteFragment_to_startFragment)
             }}
 
