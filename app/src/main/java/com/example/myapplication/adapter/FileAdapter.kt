@@ -1,22 +1,19 @@
 package com.example.myapplication.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.model.NoteModel
-import com.example.myapplication.model.Tasks
-import com.example.myapplication.screen.addnote.AddNoteViewModel
+import com.example.myapplication.model.FilesNote
 import com.example.myapplication.screen.start.StartFragment
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class NoteAdapter:RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class FileAdapter:RecyclerView.Adapter<FileAdapter.NoteViewHolder>() {
 
-    var listNote = emptyList<NoteModel>()
+    var listNote = emptyList<FilesNote>()
 
     class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -33,12 +30,12 @@ class NoteAdapter:RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        holder.itemView.item_title.text = listNote[position].title
-        holder.itemView.dateTime.text = listNote[position].time
+        holder.itemView.FileName.text = listNote[position].title
+        Log.d("asam",listNote[position].time)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: List<NoteModel>) {
+    fun setList(list: List<FilesNote>) {
         listNote = list
         notifyDataSetChanged()
     }
@@ -46,7 +43,7 @@ class NoteAdapter:RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     override fun onViewAttachedToWindow(holder: NoteViewHolder) {
         super.onViewAttachedToWindow(holder)
         holder.itemView.setOnClickListener {
-            StartFragment.clickNote(listNote[holder.adapterPosition])
+            StartFragment.clickNote(listNote[holder.adapterPosition].id)
 
         }
     }

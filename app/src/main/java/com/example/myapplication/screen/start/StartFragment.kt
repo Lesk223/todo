@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.APP
 import com.example.myapplication.R
-import com.example.myapplication.adapter.NoteAdapter
+import com.example.myapplication.adapter.FileAdapter
 import com.example.myapplication.databinding.FragmentStartBinding
+import com.example.myapplication.model.FilesNote
 import com.example.myapplication.model.NodeWithTask
-import com.example.myapplication.model.NoteModel
 import com.example.myapplication.screen.addnote.AddNoteViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class StartFragment : Fragment() {
     lateinit var binding: FragmentStartBinding
     lateinit var recyclerView: RecyclerView
-    lateinit var adapter: NoteAdapter
+    lateinit var adapter: FileAdapter
     lateinit var currentNote:NodeWithTask
 
     override fun onCreateView(
@@ -45,12 +45,17 @@ class StartFragment : Fragment() {
         val viewModel = ViewModelProvider(this).get(StartViewModel::class.java)
         viewModel.initDatabase()
         recyclerView = binding.recyclerView
-        adapter = NoteAdapter()
+        adapter = FileAdapter()
         recyclerView.adapter = adapter
-        viewModel.getAllNotes().observe(viewLifecycleOwner, { listNotes ->
+        viewModel.getAllNotes().observe(viewLifecycleOwner) { listNotes ->
             adapter.setList(listNotes.asReversed())
-        })
-       // binding.floatButton.setOnClickListener {
+            if (adapter.itemCount == 0) {
+                binding.imagestart.setImageResource(R.drawable.ic_baseline_folder_24)
+            } else {
+                binding.imagestart.setImageDrawable(null)
+            }
+        }
+        // binding.floatButton.setOnClickListener {
 
          //   APP.navController.navigate(R.id.action_startFragment_to_addNoteFragment)
 
@@ -74,17 +79,23 @@ class StartFragment : Fragment() {
     }
 private fun showDialog(viewHolder: RecyclerView.ViewHolder){
     val viewModel = ViewModelProvider(this).get(StartViewModel::class.java)
-    val builder=AlertDialog.Builder(APP)
+    val builder=AlertDialog.Builder(APP,R.style.DeleteAlert)
     builder.setTitle("Удаление")
-    builder.setMessage("Действительно хотите удалить заметку '${adapter.listNote[viewHolder.adapterPosition].title}'")
+    builder.setMessage("Действительно хотите удалить папку '${adapter.listNote[viewHolder.adapterPosition].title}'")
     builder.setPositiveButton("Да"){dialog,which->
         val position =viewHolder.adapterPosition
-       viewModel.delete( adapter.listNote[position]){}
+       //viewModel.delete( adapter.listNote[position]){}
+        viewModel.delete(adapter.listNote[position]){}
+        viewModel.deleteAllNodes(adapter.listNote[position].id){}
+        viewModel.deleteAllTasks(adapter.listNote[position].id){}
+
+        //     viewModel.delCascade(adapter.listNote[position].id)
 
     }
     builder.setNegativeButton("Нет"){dialog,which->
         val position =viewHolder.adapterPosition
         adapter.notifyItemChanged(position)
+
 
     }
     builder.show()
@@ -93,12 +104,12 @@ private fun showDialog(viewHolder: RecyclerView.ViewHolder){
 
 }
     companion object {
-        fun clickNote(noteModel: NoteModel): NoteModel {
+        fun clickNote(id:Int): Int {
             val bundle = Bundle()
 
-            bundle.putSerializable("note", noteModel)
+            bundle.putSerializable("note", id)
             APP.navController.navigate(R.id.action_startFragment_to_recFrag, bundle)
-            return noteModel
+            return id
 
         }
     }
@@ -111,10 +122,10 @@ private fun showDialog(){
         val dialogLayout=inflater.inflate(R.layout.edittext,null)
         val editText=dialogLayout.findViewById<EditText>(R.id.editTextTextPersonName)
         with(builder){
-            setTitle("Введите название")
+            setTitle("Введите название папки")
             setPositiveButton("OK") { dialog, which ->
                 //currentNote.title=editText.text.toString()
-                val notemodel = NoteModel(title = editText.text.toString())
+                val notemodel = FilesNote(title = editText.text.toString())
                     viewmodel.insert(notemodel) {}
             }
                 setView(dialogLayout)

@@ -3,24 +3,44 @@ package com.example.myapplication.screen.addnote
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.Repostory
-import com.example.myapplication.model.NoteModel
+import com.example.myapplication.model.FilesNote
+import com.example.myapplication.model.Node
+import com.example.myapplication.model.Tasks
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AddNoteViewModel: ViewModel() {
-    fun insert(noteModel: NoteModel,onSuccess:()->Unit)=
+    fun update (node: Node,onSuccess:()->Unit)=
+        viewModelScope.launch (Dispatchers.IO) {
+            Repostory.updateNode(node) {
+                onSuccess()
+            }
+        }
+    fun delete (node: Node,onSuccess:()->Unit)=
+        viewModelScope.launch (Dispatchers.IO) {
+            Repostory.deleteNode(node) {
+                onSuccess()
+            }
+        }
+    fun insert(noteModel: FilesNote,onSuccess:()->Unit)=
         viewModelScope.launch (Dispatchers.IO) {
             Repostory.insertNote(noteModel){
                 onSuccess()
             }
         }
-    fun delete (noteModel: NoteModel,onSuccess:()->Unit)=
+    fun update (tasks: Tasks,onSuccess:()->Unit)=
+        viewModelScope.launch (Dispatchers.IO) {
+            Repostory.updateTask(tasks) {
+                onSuccess()
+            }
+        }
+    fun delete (noteModel: FilesNote,onSuccess:()->Unit)=
         viewModelScope.launch (Dispatchers.IO) {
             Repostory.deleteNote(noteModel) {
                 onSuccess()
             }
         }
-            fun update (noteModel: NoteModel,onSuccess:()->Unit)=
+            fun update (noteModel: FilesNote,onSuccess:()->Unit)=
                 viewModelScope.launch (Dispatchers.IO) {
                     Repostory.updateNote(noteModel){
                         onSuccess()

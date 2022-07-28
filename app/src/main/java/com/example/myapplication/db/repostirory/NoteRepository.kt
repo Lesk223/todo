@@ -2,18 +2,26 @@ package com.example.myapplication.db.repostirory
 
 import android.app.TaskStackBuilder
 import androidx.lifecycle.LiveData
+import com.example.myapplication.db.NoteDao
+import com.example.myapplication.model.FilesNote
+import com.example.myapplication.model.Node
 import com.example.myapplication.model.NodeWithTask
-import com.example.myapplication.model.NoteModel
 import com.example.myapplication.model.Tasks
-import org.w3c.dom.Node
 
 interface NoteRepository {
-    val AllNotes: LiveData<List<NoteModel>>
-    suspend fun insertNote (noteModel: NoteModel, onSuccess:()->Unit)
-    suspend fun deleteNote (noteModel: NoteModel,onSuccess:()->Unit)
-    suspend fun updateNote (noteModel: NoteModel,onSuccess:()->Unit)
+    val AllNotes: LiveData<List<FilesNote>>
+    fun getNode(id: Int):LiveData<List<Node>>
+    suspend fun insertNote (noteModel: FilesNote, onSuccess:()->Unit)
+    suspend fun deleteNote (noteModel: FilesNote,onSuccess:()->Unit)
+    suspend fun updateNote (noteModel: FilesNote,onSuccess:()->Unit)
     suspend fun insertTask (tasks: Tasks,onSuccess:()->Unit)
-    abstract fun insertNode(nodeWithTask: NodeWithTask,onSuccess: () -> Unit)
+    suspend fun insertNode (node: Node,onSuccess:()->Unit)
+    suspend fun deleteNode (node: Node,onSuccess:()->Unit)
+    suspend fun deleteTask (tasks: Tasks,onSuccess:()->Unit)
+    suspend fun updateNode(node: Node,onSuccess: () -> Unit)
+    suspend fun updateTask(tasks: Tasks,onSuccess: () -> Unit)
+    fun list(id:Int): LiveData<List<Tasks>>
     val getTask: LiveData<List<NodeWithTask>>
-    suspend fun getTask(id:Int,onSuccess: () -> Unit)
+    fun deleteAllTasks(id: Int, onSuccess: () -> Unit)
+    fun deletAllNodes(id: Int,onSuccess: () -> Unit)
 }
