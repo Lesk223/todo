@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".screen.detail.AddTask">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            android:layout_height="wrap_content"
+            app:title="Добавить задачу "
+            app:menu="@menu/addmenu"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:maxLength="15"
+            android:paddingLeft="10dp"
+            android:hint="Заголовок"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_marginTop="20dp"
+            android:textColor="#B6B6B6"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Срок выполнения" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/dateEnter"
+                android:layout_width="248dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_baseline_calendar_month_24"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Дата"
+                android:inputType="date"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_baseline_watch_later_24"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="time"
+                android:paddingLeft="10dp"
+                android:text="Время "
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_marginTop="20dp"
+            android:textColor="#B6B6B6"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Приоритет" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Низкий" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Средний" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity=""
+                    android:text="Высокий" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>
